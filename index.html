@@ -29,13 +29,19 @@
         ];
         
         function startWhispering() {
-            setInterval(() => {
-                let msg = new SpeechSynthesisUtterance(phrases[Math.floor(Math.random() * phrases.length)]);
-                msg.rate = 0.8;
-                speechSynthesis.speak(msg);
-            }, 10000);
-            document.getElementById("startBtn").disabled = true;
-        }
+    let msg = new SpeechSynthesisUtterance("Starting voice test...");
+    msg.rate = 0.8;
+    speechSynthesis.speak(msg); // First speech to unlock audio in browsers
+
+    setInterval(() => {
+        let randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+        let whisper = new SpeechSynthesisUtterance(randomPhrase);
+        whisper.rate = 0.8;
+        speechSynthesis.speak(whisper);
+    }, 10000);
+
+    document.getElementById("startBtn").disabled = true;
+}
     </script>
 </head>
 <body>
