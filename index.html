@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Whisper Test</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            padding-top: 20vh;
+        }
+        button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        let phrases = [
+            "I see you...",
+            "Don't look behind you...",
+            "Your phone belongs to me now...",
+            "Running system scan...",
+            "Your secrets are no longer safe..."
+        ];
+        
+        function startWhispering() {
+            setInterval(() => {
+                let msg = new SpeechSynthesisUtterance(phrases[Math.floor(Math.random() * phrases.length)]);
+                msg.rate = 0.8;
+                speechSynthesis.speak(msg);
+            }, 10000);
+            document.getElementById("startBtn").disabled = true;
+        }
+    </script>
+</head>
+<body>
+    <h1>🔊 Voice Whisper Test</h1>
+    <p>Click the button below to start whispering.</p>
+    <button id="startBtn" onclick="startWhispering()">Start Whispering</button>
+</body>
+</html>
